@@ -282,7 +282,7 @@ ${invoiceText}
 });
 
 app.get('/api/download/:filename', (req, res) => {
-  const file = path.join('/tmp', req.params.filename);
+  const file = path.join('/tmp', req.params.filename);  // read from /tmp!
   res.download(file);
 });
 
