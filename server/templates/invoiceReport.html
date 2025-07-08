@@ -99,6 +99,23 @@
         font-weight: 600;
         color: #3963cc;
       }
+      /* ==== Blue Card Styles ==== */
+      .section-card.blue-card {
+        background: #f2f7ff;
+        border-left: 8px solid #3963cc;
+        margin-bottom: 20px;
+        padding: 22px 26px 16px 28px;
+        border-radius: 12px;
+        box-shadow: 0 1.5px 8px rgba(39, 75, 170, 0.05);
+      }
+      .section-heading.blue {
+        color: #3963cc;
+        font-weight: 700;
+        font-size: 1.19rem;
+        margin-bottom: 9px;
+        margin-top: 0;
+      }
+      /* ==== END Blue Card Styles ==== */
       .section-card {
         background: #f8fafd;
         border-radius: 16px;
@@ -164,11 +181,8 @@
       .spacer {
         flex: 1 1 auto;
       }
-
       .container {
-        /* ... */
         min-height: 100vh;
-        /* ... */
       }
     </style>
   </head>
@@ -181,7 +195,7 @@
         <div><strong>Shop:</strong> {{SHOP_NAME}}</div>
         <div><strong>Date:</strong> {{DATE}}</div>
       </div>
-      {{SECTION_CARDS}}
+      {{REASON_FOR_VISIT_CARD}} {{REPAIR_SUMMARY_CARD}} {{SECTION_CARDS}}
       <div class="spacer"></div>
     </div>
   </body>
