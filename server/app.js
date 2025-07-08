@@ -1,11 +1,10 @@
+// Always log version for debugging live deploys!
 console.log('🔥🔥🔥 SERVICECIPHER DEPLOYED CODE VERSION: ', Date.now());
+
 const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
-app.use(cors({
-  origin: ['https://servicecipher.com', 'https://www.servicecipher.com', 'https://servicecipher-frontend.vercel.app'],
-  credentials: true,
-}));const pdfParse = require('pdf-parse');
+const pdfParse = require('pdf-parse');
 const fs = require('fs');
 const path = require('path');
 const OpenAI = require('openai');
@@ -15,7 +14,17 @@ require('dotenv').config();
 
 const app = express();
 const port = 3001;
-app.use(cors());
+
+// --- Only ONE CORS middleware, right after express() ---
+app.use(cors({
+  origin: [
+    'https://servicecipher.com',
+    'https://www.servicecipher.com',
+    'https://servicecipher-frontend.vercel.app'
+  ],
+  credentials: true,
+}));
+
 app.use(express.json());
 const upload = multer({ dest: 'uploads/' });
 
@@ -269,7 +278,7 @@ ${invoiceText}
     });
     await browser.close();
 
-    // Save PDF
+    // Save PDF to /tmp (cross-platform, works on Railway)
     const timestamp = Date.now();
     const pdfPath = path.join('/tmp', `ServiceCipher_Report_${timestamp}.pdf`);
     fs.writeFileSync(pdfPath, pdfBuffer);
