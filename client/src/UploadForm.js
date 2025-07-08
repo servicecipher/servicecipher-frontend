@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const UploadForm = () => {
+const UploadForm = ({ userEmail }) => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("idle");
   const [downloadUrl, setDownloadUrl] = useState("");
@@ -20,9 +20,12 @@ const UploadForm = () => {
     formData.append("pdf", file);
 
     try {
-      const res = await fetch("http://localhost:3001/api/upload", {
+      const res = await fetch("https://servicecipher-backend-production.up.railway.app/api/upload", {
         method: "POST",
         body: formData,
+        headers: {
+          "x-user-email": userEmail, // Pass the email in the header
+        },
       });
       const data = await res.json();
       if (data.success) {
@@ -71,16 +74,33 @@ const UploadForm = () => {
         </div>
       )}
       {status === "complete" && (
-        <div className="status complete">
-          <span style={{ textAlign: "center", width: "100%" }}>
-            Analysis Complete!<br />
-            Your customer facing report is ready for download.
-          </span>
-          <a href={downloadUrl} className="download-btn" download>
-            Download Report
-          </a>
-        </div>
-      )}
+  <div className="status complete">
+    <span style={{ textAlign: "center", width: "100%" }}>
+      Analysis Complete!<br />
+      Your customer facing report is ready for download.
+    </span>
+    <a href={downloadUrl} className="download-btn" download>
+      Download Report
+    </a>
+    <button
+      style={{
+        marginTop: "20px",
+        padding: "8px 20px",
+        borderRadius: "7px",
+        border: "none",
+        background: "#3963cc",
+        color: "#fff",
+        fontWeight: "bold",
+        fontSize: "1rem",
+        cursor: "pointer",
+        boxShadow: "0 2px 8px rgba(32,40,90,0.08)"
+      }}
+      onClick={() => window.location.reload()}
+    >
+      Upload Another Invoice
+    </button>
+  </div>
+)}
       {status === "error" && (
         <div className="status error">
           <span>Something went wrong. Please try again.</span>
