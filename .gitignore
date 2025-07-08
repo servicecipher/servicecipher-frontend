@@ -5,3 +5,7 @@ build/
 dist/
 .env
 .DS_Store
+# Don't track PDF reports or server data in frontend repo!
+../downloads/
+../server/
+src/allowed_emails.json
