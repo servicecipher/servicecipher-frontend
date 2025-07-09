@@ -181,28 +181,44 @@ OTHER_NOTES
 RECOMMENDATIONS
 
 **Instructions for each section:**
-- **DATE:** State the service date from the invoice, or today's date if missing.
+- **DATE:** State the service date from the invoice, or use today's date if it's missing.
 - **SHOP_NAME:** List the shop name, or leave blank if missing.
-- **REASON_FOR_VISIT:** Write 2–3 sentences in plain English about why the car was brought in. If the reason is missing, list all possible reasons based on the invoice's repairs.
-- **REPAIR_SUMMARY:** In 3–5 sentences, clearly describe every repair and service completed. Summarize in plain language. Spell out every job, no matter how minor.
-- **MAJOR / MODERATE / MINOR:** For each, give 2–4 bullet points. For each bullet, include:
-    - **What was fixed**
-    - **Why it mattered**
-    - **What could have happened if not fixed**
-    - If any section has nothing, write: "No major repairs" (or "None").
-- **COST_BREAKDOWN:** List every line item (parts, labor, fees, tax, etc.) as bullets, using numbers if possible. Always include the total at the end.
-- **WHAT_DOES_THIS_ACTUALLY_MEAN?:** For every major part or service listed in the invoice (for example: control arms, ball joints, alignment, brakes, ignition coils, battery, etc), provide a clear, 1–3 sentence educational explanation about WHAT that part/system does, WHY it matters, and what can happen if it fails. This section is for teaching a customer who knows nothing about cars. Do NOT summarize the visit, do NOT repeat why they came in or what was fixed, and do NOT include marketing or general advice. Just explain each part/service mentioned, one at a time, like this:
-- **Control Arms:** Control arms connect the wheels to the car’s frame and allow for smooth up-and-down movement. They are critical for stable steering and proper alignment. If they wear out or break, you may experience poor handling or even lose control of the vehicle.
-- **Ball Joints:** Ball joints act as pivots between the wheels and the suspension. They help the car turn and move smoothly over bumps. If a ball joint fails, it can cause steering problems or make the wheel detach.
-- **OTHER_NOTES:** Add any warranty, reminders, or extra notes from the invoice. If missing, write: "No additional notes."
-- **RECOMMENDATIONS:** List 2–4 helpful, non-salesy tips for future maintenance.
+- **REASON_FOR_VISIT:** Always include 2–3 sentences in plain English about why the customer brought the vehicle in.  
+  - If a reason is listed, summarize it clearly.  
+  - If it's not listed, confidently infer the likely reason based on the repairs or services provided.  
+  - **Never leave this section blank or write “None.”**
+
+- **REPAIR_SUMMARY:** Always write 3–5 sentences summarizing every service or repair completed.  
+  - Use simple language to explain what was done.  
+  - If the invoice is brief or vague, use logical context to expand it into a helpful explanation.  
+  - **Never skip this section or write “None.”**
+
+- **MAJOR / MODERATE / MINOR:** For each, include 2–4 bullet points. Each bullet should explain:  
+    - **What was fixed**  
+    - **Why it mattered**  
+    - **What could have happened if it wasn't fixed**  
+    - If the section doesn’t apply, write “No major repairs” (or “None”).
+
+- **COST_BREAKDOWN:** List every line item (parts, labor, fees, tax, etc.) as bullet points. Use numbers and include the total at the end.
+
+- **WHAT_DOES_THIS_ACTUALLY_MEAN?:**  
+  For every major part or service in the invoice (e.g. control arms, ball joints, alignment, brakes, ignition coils, battery, etc.), write a 1–3 sentence explanation of:  
+    - What it does  
+    - Why it matters  
+    - What can happen if it fails  
+  This section is educational — do not repeat why the car was brought in or what was done. Use a helpful tone, like this:
+  - **Control Arms:** Control arms connect the wheels to the car’s frame and allow for smooth up-and-down movement. They are critical for stable steering and proper alignment. If they wear out or break, you may experience poor handling or even lose control of the vehicle.
+  - **Ball Joints:** Ball joints act as pivots between the wheels and the suspension. They help the car turn and move smoothly over bumps. If a ball joint fails, it can cause steering problems or make the wheel detach.
+
+- **OTHER_NOTES:** Add any warranty, reminders, or extra notes. If nothing is listed, write “No additional notes.”
+- **RECOMMENDATIONS:** Offer 2–4 helpful, specific tips for future maintenance. Keep it friendly and non-salesy.
 
 **General rules:**
-- **Never skip a section**—always include every section, even if you must write "None."
-- **Never summarize or omit details.** If the invoice is brief, add helpful general info for that scenario.
-- **Be ruthlessly specific and helpful, as if talking to a friend.**
-- **Do not use any code or JSON.**
-- **Use clear headings and bullets.**
+- **Never skip a section.** Every section must be present — even if brief.
+- **Do not summarize or repeat.** Each section must serve a unique purpose.
+- **Be specific, helpful, and clear — like you're talking to a friend.**
+- **Do not use code, markdown, or JSON.**
+- **Use clear section titles and bullet points where needed.**
 
 ---  
 INVOICE TO ANALYZE:  
