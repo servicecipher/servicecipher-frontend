@@ -28,12 +28,19 @@ const UploadForm = ({ userEmail }) => {
         },
       });
       const data = await res.json();
-      if (data.success) {
-        setStatus("complete");
-        setDownloadUrl(`http://localhost:3001${data.url}`);
-      } else {
-        setStatus("error");
-      }
+if (data.success) {
+  setStatus("complete");
+
+  // Use Railway backend in production, localhost in dev:
+  const backendBaseUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3001"
+      : "https://servicecipher-backend-production.up.railway.app";
+
+  setDownloadUrl(`${backendBaseUrl}${data.url}`);
+} else {
+  setStatus("error");
+}
     } catch {
       setStatus("error");
     }
