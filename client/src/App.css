@@ -229,6 +229,9 @@ main {
     font-size: 15px;
     background: #141627;
   }
+  header {
+    margin-top: 16px;
+  }
 
   .app-root {
     padding: 0;
