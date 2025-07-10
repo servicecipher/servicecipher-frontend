@@ -20,8 +20,9 @@ function App() {
   }, [userEmail]);
 
   const handleLogout = () => setUserEmail("");
-
-  const isApproved = userEmail && allowedEmails.includes(userEmail);
+  const isApproved =
+  userEmail &&
+  allowedEmails.map(e => e.toLowerCase()).includes(userEmail.toLowerCase());
 
   return (
     <div className="app-root">
