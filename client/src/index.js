@@ -3,13 +3,16 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import { ClerkProvider } from '@clerk/clerk-react';
 
-const clerkPubKey = "pk_test_cG9zaXRpdmUtc2F0eXItNzcuY2xlcmsuYWNjb3VudHMuZGV2JA";
+const clerkPubKey = "pk_live_Y2xlcmsuc2VydmljZWNpcGhlci5jb20k"; // Replace with your real live key if different
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <ClerkProvider publishableKey={clerkPubKey}>
+  <ClerkProvider
+    publishableKey={clerkPubKey}
+    frontendApi="clerk.servicecipher.com"
+  >
     <App />
   </ClerkProvider>
 );
