@@ -1,13 +1,15 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { ClerkProvider } from '@clerk/clerk-react';
+
+const clerkPubKey = "pk_test_cG9zaXRpdmUtc2F0eXItNzcuY2xlcmsuYWNjb3VudHMuZGV2JA";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <GoogleOAuthProvider clientId="976760343929-09hgnhbvfhvh4u3ngptthkvhv66r35oq.apps.googleusercontent.com">
+  <ClerkProvider publishableKey={clerkPubKey}>
     <App />
-  </GoogleOAuthProvider>
+  </ClerkProvider>
 );
