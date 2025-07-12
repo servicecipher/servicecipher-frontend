@@ -55,7 +55,7 @@ if (data.success) {
               style={{ display: "none" }}
             />
             <span className="file-choose">
-              {file ? file.name : "Drag & drop or click to select your PDF file"}
+              {file ? file.name : "Click here to select your PDF file"}
             </span>
           </label>
           <button
