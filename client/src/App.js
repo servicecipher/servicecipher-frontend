@@ -2,29 +2,51 @@ import React from "react";
 import UploadForm from "./UploadForm";
 import "./App.css";
 import allowedEmails from "./allowed_emails.json";
-import { SignedIn, SignedOut, SignIn, useUser } from "@clerk/clerk-react";
+import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton, useUser } from "@clerk/clerk-react";
+
+// Put your Clerk publishable key here or in index.js as you've already done
+// const clerkPubKey = "pk_test_..."; // not needed if in index.js
+
+function ApprovedUploadOnly({ children }) {
+  const { user } = useUser();
+  const email = user?.primaryEmailAddress?.emailAddress || "";
+
+  const isApproved = allowedEmails
+    .map(e => e.toLowerCase())
+    .includes(email.toLowerCase());
+
+  if (!isApproved) {
+    return (
+      <p style={{ color: "red", marginTop: 32 }}>
+        Sorry, you are not approved to use the upload feature.
+        <br />
+        Please email{" "}
+        <a
+          href="mailto:support@servicecipher.com"
+          style={{ color: "#6c5ce7", textDecoration: "underline" }}
+        >
+          support@servicecipher.com
+        </a>{" "}
+        to sign up!
+      </p>
+    );
+  }
+  // Render child components if approved
+  return children;
+}
 
 function App() {
-  // Clerk hook gives us user info
-  const { user } = useUser();
-
-  // Grab the email if signed in, otherwise empty string
-  const userEmail =
-    user?.primaryEmailAddress?.emailAddress || user?.emailAddresses?.[0]?.emailAddress || "";
-
-  // Case-insensitive check
-  const isApproved =
-    userEmail &&
-    allowedEmails.map(e => e.toLowerCase()).includes(userEmail.toLowerCase());
+  const { user, isSignedIn } = useUser();
 
   return (
     <div className="app-root">
-      {/* --- USER BLOCK --- */}
-      {userEmail && (
+      {/* --- TOP RIGHT USER BLOCK --- */}
+      <SignedIn>
         <div className="user-info">
-          Signed in as <strong>{userEmail}</strong>
+          Signed in as <strong>{user?.primaryEmailAddress?.emailAddress}</strong>
+          <UserButton afterSignOutUrl="/" />
         </div>
-      )}
+      </SignedIn>
 
       <header>
         <img
@@ -37,29 +59,16 @@ function App() {
       </header>
 
       <main>
-        {/* Not logged in = show sign-in */}
+        {/* Login Block */}
         <SignedOut>
           <SignIn />
         </SignedOut>
 
-        {/* Logged in and approved = show upload */}
+        {/* Only approved users can upload */}
         <SignedIn>
-          {isApproved ? (
-            <UploadForm userEmail={userEmail} />
-          ) : (
-            <p style={{ color: "red", marginTop: 32 }}>
-              Sorry, you are not approved to use the upload feature.
-              <br />
-              Please email{" "}
-              <a
-                href="mailto:support@servicecipher.com"
-                style={{ color: "#6c5ce7", textDecoration: "underline" }}
-              >
-                support@servicecipher.com
-              </a>{" "}
-              to sign up!
-            </p>
-          )}
+          <ApprovedUploadOnly>
+            <UploadForm userEmail={user?.primaryEmailAddress?.emailAddress} />
+          </ApprovedUploadOnly>
         </SignedIn>
       </main>
     </div>
