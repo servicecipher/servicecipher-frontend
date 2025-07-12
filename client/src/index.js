@@ -9,7 +9,10 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <ClerkProvider publishableKey={clerkPubKey}>
+  <ClerkProvider
+    publishableKey={clerkPubKey}
+    frontendApi="clerk.Y2xlcmsuc2VydmljZWNpcGhlci5jb20.accounts.dev"
+  >
     <App />
   </ClerkProvider>
 );
