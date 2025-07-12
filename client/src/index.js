@@ -11,7 +11,7 @@ const root = createRoot(container);
 root.render(
   <ClerkProvider
     publishableKey={clerkPubKey}
-    frontendApi="clerk.Y2xlcmsuc2VydmljZWNpcGhlci5jb20.accounts.dev"
+    frontendApi="clerk.servicecipher.com"
   >
     <App />
   </ClerkProvider>
