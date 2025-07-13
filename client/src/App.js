@@ -2,24 +2,17 @@ import React from "react";
 import UploadForm from "./UploadForm";
 import "./App.css";
 import allowedEmails from "./allowed_emails.json";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignIn,
-  UserButton,
-  useUser,
-} from "@clerk/clerk-react";
+import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton, useUser } from "@clerk/clerk-react";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LandingPage from "./LandingPage";
+// Put your Clerk publishable key here or in index.js as you've already done
+// const clerkPubKey = "pk_test_..."; // not needed if in index.js
 
 function ApprovedUploadOnly({ children }) {
   const { user } = useUser();
   const email = user?.primaryEmailAddress?.emailAddress || "";
 
   const isApproved = allowedEmails
-    .map((e) => e.toLowerCase())
+    .map(e => e.toLowerCase())
     .includes(email.toLowerCase());
 
   if (!isApproved) {
@@ -38,15 +31,16 @@ function ApprovedUploadOnly({ children }) {
       </p>
     );
   }
-
+  // Render child components if approved
   return children;
 }
 
-function UploadPage() {
+function App() {
   const { user, isSignedIn } = useUser();
 
   return (
     <div className="app-root">
+      {/* --- TOP RIGHT USER BLOCK --- */}
       <SignedIn>
         <div className="user-info">
           Signed in as <strong>{user?.primaryEmailAddress?.emailAddress}</strong>
@@ -65,10 +59,12 @@ function UploadPage() {
       </header>
 
       <main>
+        {/* Login Block */}
         <SignedOut>
           <SignIn />
         </SignedOut>
 
+        {/* Only approved users can upload */}
         <SignedIn>
           <ApprovedUploadOnly>
             <UploadForm userEmail={user?.primaryEmailAddress?.emailAddress} />
@@ -76,17 +72,6 @@ function UploadPage() {
         </SignedIn>
       </main>
     </div>
-  );
-}
-
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/clarity" element={<LandingPage />} />
-        <Route path="*" element={<UploadPage />} />
-      </Routes>
-    </Router>
   );
 }
 
