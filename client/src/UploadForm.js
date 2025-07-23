@@ -53,7 +53,8 @@ const UploadForm = ({ userEmail }) => {
       if (data.success) {
         setStatus("complete");
         setDownloadUrl(`https://servicecipher-backend-production.up.railway.app${data.url}`);
-        await logReport(user.id, user.primaryEmailAddress.emailAddress, selectedLanguage, data.url);
+        const fullUrl = `https://servicecipher-backend-production.up.railway.app${data.url}`;
+        await logReport(user.id, user.primaryEmailAddress.emailAddress, selectedLanguage, fullUrl);
       } else {
         setStatus("error");
       }
