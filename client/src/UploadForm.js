@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { supabase } from './supabaseClient'
 
-async function logReport(userId, type = 'standard') {
+async function logReport(userId, email, type = 'standard') {
   const { data, error } = await supabase.from('report_logs').insert([
     {
       user_id: userId,
+      user_email: email,
       report_type: type
     }
   ]);
@@ -51,7 +52,7 @@ const UploadForm = ({ userEmail }) => {
       if (data.success) {
         setStatus("complete");
         setDownloadUrl(`https://servicecipher-backend-production.up.railway.app${data.url}`);
-        await logReport(user.id, selectedLanguage);
+        await logReport(user.id, user.primaryEmailAddress.emailAddress, selectedLanguage);
       } else {
         setStatus("error");
       }
