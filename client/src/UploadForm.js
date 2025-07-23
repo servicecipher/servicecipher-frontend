@@ -1,5 +1,21 @@
 import React, { useState } from "react";
 import { useUser } from "@clerk/clerk-react";
+import { supabase } from './supabaseClient'
+
+async function logReport(userId, type = 'standard') {
+  const { data, error } = await supabase.from('report_logs').insert([
+    {
+      user_id: userId,
+      report_type: type
+    }
+  ]);
+
+  if (error) {
+    console.error('❌ Error logging report:', error.message);
+  } else {
+    console.log('✅ Report logged:', data);
+  }
+}
 
 const UploadForm = ({ userEmail }) => {
   const [file, setFile] = useState(null);
@@ -32,13 +48,13 @@ const UploadForm = ({ userEmail }) => {
         },
       });
       const data = await res.json();
-if (data.success) {
-  setStatus("complete");
-
- setDownloadUrl(`https://servicecipher-backend-production.up.railway.app${data.url}`);
-} else {
-  setStatus("error");
-}
+      if (data.success) {
+        setStatus("complete");
+        setDownloadUrl(`https://servicecipher-backend-production.up.railway.app${data.url}`);
+        await logReport(user.id, selectedLanguage);
+      } else {
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     }
