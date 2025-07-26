@@ -24,7 +24,6 @@ const UploadForm = ({ userEmail }) => {
   const [status, setStatus] = useState("idle");
   const [downloadUrl, setDownloadUrl] = useState("");
   const { user } = useUser();
-  const industry = user?.publicMetadata?.industry || "Auto";
   const [selectedLanguage, setSelectedLanguage] = useState("english");
 
   const handleFileChange = (e) => {
@@ -35,6 +34,14 @@ const UploadForm = ({ userEmail }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const industry = user?.publicMetadata?.industry || "Auto";
+
+    if (industry.toLowerCase() === "medical") {
+      alert("🩺 Medical user detected — custom report flow goes here.");
+      // TODO: Replace this with medical-specific upload logic
+      return;
+    }
+
     if (!file) return;
     setStatus("processing");
     setDownloadUrl("");
