@@ -60,7 +60,11 @@ const UploadForm = ({ userEmail }) => {
         const fullUrl = `https://servicecipher-backend-production.up.railway.app${data.url}`;
         await logReport(user.id, user.primaryEmailAddress.emailAddress, industry, fullUrl);
       } else {
-        setStatus("error");
+        if (res.status === 403) {
+          setStatus("forbidden");
+        } else {
+          setStatus("error");
+        }
       }
     } catch {
       setStatus("error");
@@ -144,6 +148,11 @@ const UploadForm = ({ userEmail }) => {
     </button>
   </div>
 )}
+      {status === "forbidden" && (
+        <div className="status error">
+          <span>You do not have access to generate this type of report.</span>
+        </div>
+      )}
       {status === "error" && (
         <div className="status error">
           <span>Something went wrong. Please try again.</span>
