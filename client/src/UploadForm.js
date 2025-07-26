@@ -34,11 +34,38 @@ const UploadForm = ({ userEmail }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const industry = user?.publicMetadata?.industry || "Auto";
+    const rawIndustry = user?.publicMetadata?.industry || "Auto";
+    const industry = rawIndustry.toLowerCase();
 
-    if (industry.toLowerCase() === "medical") {
-      alert("🩺 Medical user detected — custom report flow goes here.");
-      // TODO: Replace this with medical-specific upload logic
+    if (industry === "medical") {
+      if (!file) return;
+      setStatus("processing");
+      setDownloadUrl("");
+      const formData = new FormData();
+      formData.append("pdf", file);
+
+      try {
+        const res = await fetch("https://servicecipher-backend-production.up.railway.app/api/upload-medical", {
+          method: "POST",
+          body: formData,
+          headers: {
+            "x-user-email": userEmail,
+            "x-user-language": selectedLanguage,
+            "x-user-industry": industry
+          },
+        });
+        const data = await res.json();
+        if (data.success) {
+          setStatus("complete");
+          setDownloadUrl(`https://servicecipher-backend-production.up.railway.app${data.url}`);
+          const fullUrl = `https://servicecipher-backend-production.up.railway.app${data.url}`;
+          await logReport(user.id, user.primaryEmailAddress.emailAddress, "medical", fullUrl);
+        } else {
+          setStatus("error");
+        }
+      } catch {
+        setStatus("error");
+      }
       return;
     }
 
