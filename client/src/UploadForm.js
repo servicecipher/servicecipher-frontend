@@ -24,6 +24,7 @@ const UploadForm = ({ userEmail }) => {
   const [status, setStatus] = useState("idle");
   const [downloadUrl, setDownloadUrl] = useState("");
   const { user } = useUser();
+  const industry = user?.publicMetadata?.industry || "Auto";
   const [selectedLanguage, setSelectedLanguage] = useState("english");
 
   const handleFileChange = (e) => {
@@ -47,6 +48,7 @@ const UploadForm = ({ userEmail }) => {
         headers: {
           "x-user-email": userEmail,
           "x-user-language": selectedLanguage,
+          "x-user-industry": industry
         },
       });
       const data = await res.json();
