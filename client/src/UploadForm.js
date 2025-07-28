@@ -51,8 +51,8 @@ const UploadForm = ({ userEmail }) => {
         headers: {
           "x-user-email": userEmail,
           "x-user-language": selectedLanguage,
-          "x-user-industry": industry,
-          "x-document-type": selectedDocType
+          "x-document-type": selectedDocType,
+          "x-user-industries": (user?.publicMetadata?.industries || []).join(",")
         },
       });
       const data = await res.json();
