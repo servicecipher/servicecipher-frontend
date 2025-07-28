@@ -79,7 +79,7 @@ const UploadForm = ({ userEmail }) => {
         <form onSubmit={handleSubmit} className="upload-form">
           <label htmlFor="file-upload" className="file-label">
             <span className="cloud-icon">☁️</span>
-            <span className="file-title">Upload Your Invoice</span>
+            <span className="file-title">Upload Your Invoice or Estimate</span>
             <input
               id="file-upload"
               type="file"
@@ -158,7 +158,7 @@ const UploadForm = ({ userEmail }) => {
       }}
       onClick={() => window.location.reload()}
     >
-      Upload Another Invoice
+      Upload Another Invoice or Estimate
     </button>
   </div>
 )}
