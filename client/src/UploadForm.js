@@ -73,6 +73,7 @@ const UploadForm = ({ userEmail }) => {
     }
   };
 
+  const isFormComplete = file && selectedLanguage && selectedDocType;
   return (
     <div className="upload-outer-wrapper">
       <div className="upload-container">
@@ -121,7 +122,7 @@ const UploadForm = ({ userEmail }) => {
           <button
             type="submit"
             className="generate-btn"
-            disabled={status === "processing"}
+            disabled={!isFormComplete || status === "processing"}
           >
             {status === "processing" ? "PROCESSING..." : "GENERATE REPORT"}
           </button>
