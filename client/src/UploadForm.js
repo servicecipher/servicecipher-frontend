@@ -25,6 +25,7 @@ const UploadForm = ({ userEmail }) => {
   const [downloadUrl, setDownloadUrl] = useState("");
   const { user } = useUser();
   const [selectedLanguage, setSelectedLanguage] = useState("english");
+  const [selectedDocType, setSelectedDocType] = useState("invoice");
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -50,7 +51,8 @@ const UploadForm = ({ userEmail }) => {
         headers: {
           "x-user-email": userEmail,
           "x-user-language": selectedLanguage,
-          "x-user-industry": industry
+          "x-user-industry": industry,
+          "x-document-type": selectedDocType
         },
       });
       const data = await res.json();
@@ -102,6 +104,18 @@ const UploadForm = ({ userEmail }) => {
               <option value="french">French</option>
               <option value="german">German</option>
               <option value="danish">Danish</option>
+            </select>
+          </label>
+          <label htmlFor="doc-type-select" style={{ marginBottom: "12px", display: "block" }}>
+            Select Document Type:
+            <select
+              id="doc-type-select"
+              value={selectedDocType}
+              onChange={(e) => setSelectedDocType(e.target.value)}
+              style={{ marginLeft: "8px", padding: "4px 8px", borderRadius: "4px", border: "1px solid #ccc" }}
+            >
+              <option value="invoice">Invoice</option>
+              <option value="estimate">Estimate</option>
             </select>
           </label>
           <button
