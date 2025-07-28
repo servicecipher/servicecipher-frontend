@@ -73,7 +73,7 @@ const UploadForm = ({ userEmail }) => {
     }
   };
 
-  const isFormComplete = file && selectedLanguage && selectedDocType;
+  const isFormComplete = !!file;
   return (
     <div className="upload-outer-wrapper">
       <div className="upload-container">
