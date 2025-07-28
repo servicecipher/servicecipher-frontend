@@ -29,7 +29,7 @@ function App() {
           alt="ServiceCipher logo"
           className="logo"
         />
-        <h2>Customer facing invoice & estimate analysis</h2>
+        <h2>“Decode. Deliver. Done." </h2>
         <hr className="header-line" />
       </header>
 
