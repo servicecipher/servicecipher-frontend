@@ -1,7 +1,7 @@
 body, html, #root {
   height: 100%;
-  background: #141627;
-  color: #e2e7fa;
+  background: #ffffff;
+  color: #000000;
   font-family: 'Inter', Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -15,9 +15,11 @@ body, html, #root {
 }
 
 .logo {
-  height: 400px;
-  margin-bottom: -150px;
-  margin-top: -150px;
+  height: 160px;
+  margin-bottom: -60px;
+  margin-top: 0;
+  max-width: 95%;
+  object-fit: contain;
 }
 
 header {
@@ -89,7 +91,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #282b45;
+  background: #cefee1;
   /* border: 2px dashed #4d50c6; */ /* REMOVE this line for no double border */
   border-radius: 14px;
   padding: 32px;
@@ -100,7 +102,7 @@ main {
 }
 
 .file-label:hover {
-  border: 2.5px solid #8d7cff;
+  border: 2.5px solid #a1d4c5;
 }
 
 .cloud-icon {
@@ -122,8 +124,8 @@ main {
 }
 
 .generate-btn, .download-btn {
-  background: linear-gradient(90deg, #9282fe 0%, #6cb6ff 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #cefee1 0%, #a1d4c5 100%);
+  color: #000000;
   border: none;
   border-radius: 10px;
   font-size: 1.2rem;
@@ -137,7 +139,7 @@ main {
 
 .generate-btn[disabled], .generate-btn:disabled {
   opacity: 0.7;
-  background: #6e67ae;
+  background: #c5e4d9;
   cursor: not-allowed;
 }
 
@@ -163,6 +165,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.status.complete {
+  background: #cefee1;
+  color: #000000;
 }
 
 .status.error {
@@ -191,8 +198,8 @@ main {
   top: 36px;        /* add more space from top */
   right: 38px;
   font-size: 0.97rem;   /* smaller font */
-  background: rgba(35,30,50, 0.92);
-  color: #fff;
+  background: rgba(200, 240, 220, 0.92);
+  color: #000000;
   padding: 6px 14px;   /* smaller padding */
   border-radius: 8px;
   z-index: 10;
@@ -209,8 +216,8 @@ main {
 }
 
 .user-info button {
-  background: #8b5cf6;
-  color: #fff;
+  background: #a1d4c5;
+  color: #000000;
   border: none;
   padding: 3px 12px;
   margin-left: 8px;
@@ -221,13 +228,14 @@ main {
 }
 
 .user-info button:hover {
-  background: #6c5ce7;
+  background: #cefee1;
 }
 
 @media (max-width: 600px) {
   body, html, #root {
     font-size: 15px;
-    background: #141627;
+    background: #ffffff;
+    color: #000000;
   }
   header {
     margin-top: 16px;
@@ -244,6 +252,7 @@ main {
     margin-bottom: 0;
     width: auto;
     max-width: 85vw;
+    object-fit: contain;
   }
 
   header {
@@ -292,6 +301,11 @@ main {
     border-radius: 8px;
     font-size: 0.98rem;
     margin-bottom: 16px;
+    background: #cefee1;
+  }
+
+  .file-label:hover {
+    border: 2.5px solid #a1d4c5;
   }
 
   .generate-btn, .download-btn {
@@ -300,6 +314,14 @@ main {
     border-radius: 7px;
     width: 100%;
     margin-top: 10px;
+    background: linear-gradient(90deg, #cefee1 0%, #a1d4c5 100%);
+    color: #000000;
+  }
+
+  .generate-btn[disabled], .generate-btn:disabled {
+    background: #c5e4d9;
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 
   .download-btn {
@@ -317,6 +339,16 @@ main {
     font-size: 0.96rem;
   }
 
+  .status.complete {
+    background: #cefee1;
+    color: #000000;
+  }
+
+  .status.error {
+    background: #ffeaea;
+    color: #822626;
+  }
+
   .user-info {
     position: static;
     margin: 8px auto 0 auto;
@@ -328,11 +360,19 @@ main {
     border-radius: 7px;
     box-shadow: none;
     text-align: center;
+    background: rgba(200, 240, 220, 0.92);
+    color: #000000;
   }
 
   .user-info button {
     margin-left: 4px;
     font-size: 0.92rem;
     padding: 4px 10px;
+    background: #a1d4c5;
+    color: #000000;
+  }
+
+  .user-info button:hover {
+    background: #cefee1;
   }
 }
