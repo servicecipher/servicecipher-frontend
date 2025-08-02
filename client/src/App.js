@@ -25,12 +25,11 @@ function App() {
 
       <header>
         <img
-          src="/servicecipher_horizontal_logo.png"
+          src="/horizontal_logo_tag.png"
           alt="ServiceCipher logo"
           className="logo"
         />
-        <h2>“Decode. Deliver. Done." </h2>
-        <hr className="header-line" />
+       
       </header>
 
       <main>
