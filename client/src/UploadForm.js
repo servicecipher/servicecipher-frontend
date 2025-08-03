@@ -76,7 +76,7 @@ const UploadForm = ({ userEmail }) => {
   const isFormComplete = !!file;
   return (
     <div className="upload-outer-wrapper">
-      <div className="upload-container">
+      <div className="upload-container full-bg">
         <form onSubmit={handleSubmit} className="upload-form">
           <label htmlFor="file-upload" className="file-label">
             <span className="cloud-icon">☁️</span>
