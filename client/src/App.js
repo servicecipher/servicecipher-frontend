@@ -1,7 +1,7 @@
 import React from "react";
 import UploadForm from "./UploadForm";
 import "./App.css";
-import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton, useUser, PricingTable } from "@clerk/clerk-react";
+import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignIn, UserButton, useUser, PricingTable } from "@clerk/clerk-react";
 
 // Put your Clerk publishable key here or in index.js as you've already done
 // const clerkPubKey = "pk_test_..."; // not needed if in index.js
@@ -69,29 +69,23 @@ function App() {
               }}
             />
           </section>
-          <SignIn
-            appearance={{
-              variables: {
-                colorPrimary: "#a1d4c5",
-                colorText: "#000000",
-                fontFamily: "Inter, sans-serif",
-              },
-              elements: {
-                card: {
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
-                  borderRadius: "8px",
-                },
-                logoBox: {
-                  display: "none",
-                },
-                formButtonPrimary: {
+          <div style={{ textAlign: "center", marginTop: "2rem" }}>
+            <SignInButton mode="modal">
+              <button
+                style={{
                   backgroundColor: "#000000",
                   color: "#ffffff",
+                  padding: "12px 24px",
                   borderRadius: "6px",
-                },
-              },
-            }}
-          />
+                  fontSize: "16px",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Sign In
+              </button>
+            </SignInButton>
+          </div>
         </SignedOut>
 
         {/* Only approved users can upload */}
