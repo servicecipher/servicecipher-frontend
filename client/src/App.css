@@ -91,12 +91,9 @@ main {
 }
 
 .file-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
   background: #cefee1;
-  /* border: 2px dashed #4d50c6; */ /* REMOVE this line for no double border */
-  border-radius: 16px; /* to match outer container */
+  border-radius: 16px;
   padding: 32px;
   width: 100%;
   cursor: pointer;
@@ -104,6 +101,7 @@ main {
   margin-top: 0;
   transition: border 0.2s;
   box-sizing: border-box;
+  flex: 1;
 }
 
 .file-label:hover {
