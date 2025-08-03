@@ -1,7 +1,7 @@
 import React from "react";
 import UploadForm from "./UploadForm";
 import "./App.css";
-import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton, useUser } from "@clerk/clerk-react";
+import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton, useUser, PricingTable } from "@clerk/clerk-react";
 
 // Put your Clerk publishable key here or in index.js as you've already done
 // const clerkPubKey = "pk_test_..."; // not needed if in index.js
@@ -35,6 +35,16 @@ function App() {
       <main>
         {/* Login Block */}
         <SignedOut>
+          <section className="pricing-section">
+            <h2>Choose Your Plan</h2>
+            <PricingTable
+              appearance={{
+                variables: {
+                  colorPrimary: "#a1d4c5",
+                },
+              }}
+            />
+          </section>
           <SignIn />
         </SignedOut>
 
