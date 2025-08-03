@@ -80,6 +80,7 @@ main {
   max-width: 600px;
   margin: 0 auto;
   box-sizing: border-box;
+  position: relative;
 }
 
 .upload-form {
@@ -152,7 +153,7 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 25px;
+  margin-top: -10px;
 }
 
 .status.complete,
@@ -174,6 +175,14 @@ main {
 .status.complete {
   background: #cefee1;
   color: #000000;
+  margin-top: 18px;
+  padding-top: 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .status.error {
