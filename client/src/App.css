@@ -16,7 +16,7 @@ body, html, #root {
 
 .logo {
   height: 160px;
-  margin-bottom: 2px;
+  margin-bottom: 0px;
   margin-top: 0;
   max-width: 95%;
   object-fit: contain;
@@ -79,6 +79,7 @@ main {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .upload-form {
@@ -103,6 +104,7 @@ main {
   margin-top: 0;
   align-self: stretch;
   transition: border 0.2s;
+  box-sizing: border-box;
 }
 
 .file-label:hover {
