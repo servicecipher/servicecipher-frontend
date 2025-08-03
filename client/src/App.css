@@ -16,7 +16,7 @@ body, html, #root {
 
 .logo {
   height: 160px;
-  margin-bottom: 0px;
+  margin-bottom: -10px;
   margin-top: 0;
   max-width: 95%;
   object-fit: contain;
@@ -96,13 +96,12 @@ main {
   align-items: center;
   background: #cefee1;
   /* border: 2px dashed #4d50c6; */ /* REMOVE this line for no double border */
-  border-radius: 14px;
+  border-radius: 16px; /* to match outer container */
   padding: 32px;
   width: 100%;
   cursor: pointer;
   margin-bottom: 28px;
   margin-top: 0;
-  align-self: stretch;
   transition: border 0.2s;
   box-sizing: border-box;
 }
