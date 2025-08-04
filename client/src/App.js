@@ -85,7 +85,7 @@ function App() {
                   <h2 style={{ margin: "10px 0" }}>{plan.price}</h2>
                   <p>{plan.desc}</p>
                   <a
-                    href={`/sign-up?plan=${plan.key}`}
+                    href={`https://app.servicecipher.com/sign-up?plan=${plan.key}`}
                     style={{
                       display: "inline-block",
                       marginTop: "10px",
