@@ -444,9 +444,10 @@ main {
 }
 
 .pricing-heading {
-  font-size: 1.6rem;
-  color: #a0a4c0;
-  margin-bottom: 50px;
+  text-align: center;
+  font-size: 1.45rem;
+  color: #000000;
+  margin-bottom: 42px;
 }
 
 
@@ -487,11 +488,11 @@ main {
 
 .plan-basic {
   background: #fff6d6;
-  border: 2px solid #f1cf79;
+  border: 2px solid #e5ba47;
 }
 
 .plan-professional {
-  background: #b2f0d2;
+  background: #a1d4c5;
 }
 
 .plan-icon {
@@ -528,7 +529,7 @@ main {
   font-size: 1rem;
   line-height: 1.6;
   margin: 12px 0 22px;
-  color: #333;
+  color: #444444;
 }
 
 .plan-button {
@@ -540,10 +541,10 @@ main {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.25s, transform 0.2s;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
 }
 .plan-button:hover {
-  background: #cefee1;
+  background: linear-gradient(90deg, #cefee1 0%, #a1d4c5 100%);
   color: #000000;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
   transform: scale(1.03);
@@ -551,13 +552,13 @@ main {
 
 /* Most Popular Label */
 .most-popular {
-  color: #c59a00;
-  font-size: 1rem;
-  font-weight: bold;
+  background: #fff6d6;
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: #000000;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-block;
   margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  justify-content: center;
   text-align: center;
 }
