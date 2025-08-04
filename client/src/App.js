@@ -82,7 +82,7 @@ function App() {
                       className="plan-button"
                       onClick={async () => {
                         if (plan === "free") {
-                          window.location.href = "https://app.servicecipher.com";
+                          document.querySelector('[data-testid="sign-in-button"]').click();
                           return;
                         }
                         try {
@@ -112,7 +112,7 @@ function App() {
         <SignedOut>
           <div style={{ textAlign: "center", marginTop: "3rem" }}>
             <SignInButton mode="modal">
-              <button className="plan-button">
+              <button className="plan-button" data-testid="sign-in-button">
                 Sign In or Create Account
               </button>
             </SignInButton>
