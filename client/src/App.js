@@ -126,15 +126,12 @@ function App() {
                             body: JSON.stringify({ planId: selectedPlanId }),
                           });
 
-                          if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                          }
-
                           const data = await response.json();
 
-                          if (data.url) {
+                          if (response.ok && data?.url) {
                             window.location.href = data.url;
                           } else {
+                            console.error("Unexpected response from server:", data);
                             alert("Checkout failed. Please try again or contact support.");
                           }
                         } catch (err) {
