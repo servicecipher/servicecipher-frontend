@@ -54,7 +54,19 @@ function App() {
                 return (
                   <div key={plan} className={`plan-card ${plan}`}>
                     {isPopular && (
-                      <div className="plan-popular-badge" style={{ backgroundColor: "#a1d4c5" }}>
+                      <div
+                        className="plan-popular-badge"
+                        style={{
+                          backgroundColor: "#a1d4c5",
+                          color: "#000000",
+                          fontWeight: "bold",
+                          padding: "0.4rem 0.75rem",
+                          fontSize: "0.85rem",
+                          borderRadius: "4px",
+                          display: "inline-block",
+                          marginBottom: "0.75rem"
+                        }}
+                      >
                         ★ Most Popular
                       </div>
                     )}
