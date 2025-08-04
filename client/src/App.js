@@ -54,17 +54,39 @@ function App() {
                 <div key={plan} style={{
                   textAlign: "center",
                   border: "1px solid #ccc",
-                  borderRadius: "8px",
+                  borderRadius: "12px",
                   padding: "20px",
-                  width: "220px",
+                  width: "240px",
                   backgroundColor: "#ffffff",
-                  boxShadow: "0px 2px 6px rgba(0,0,0,0.1)"
+                  boxShadow: "0px 4px 10px rgba(0,0,0,0.08)",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  gap: "12px"
                 }}>
-                  <div style={{ marginBottom: "8px", fontWeight: "bold" }}>{planDetails[plan].label}</div>
-                  <div style={{ marginBottom: "4px" }}>{planDetails[plan].price}</div>
-                  <div style={{ marginBottom: "12px", fontSize: "14px", maxWidth: "160px" }}>{planDetails[plan].description}</div>
+                  <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontWeight: "bold" }}>{planDetails[plan].label}</div>
+                  <div style={{ margin: "0", padding: "0", lineHeight: "1.4" }}>{planDetails[plan].price}</div>
+                  <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px", maxWidth: "160px" }}>{planDetails[plan].description}</div>
                   <button
                     className="plan-button"
+                    style={{
+                      backgroundColor: "#000000",
+                      color: "#ffffff",
+                      padding: "10px 16px",
+                      borderRadius: "6px",
+                      fontSize: "14px",
+                      border: "none",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = "#cefee1";
+                      e.target.style.color = "#000000";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "#000000";
+                      e.target.style.color = "#ffffff";
+                    }}
                     onClick={async () => {
                       try {
                         const response = await fetch("/api/create-checkout-session", {
