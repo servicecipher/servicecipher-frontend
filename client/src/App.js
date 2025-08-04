@@ -134,11 +134,11 @@ function App() {
                             window.location.href = data.url;
                           } else {
                             console.error("Unexpected response from server:", data);
-                            alert("Checkout failed. Please try again or contact support.");
+                            alert("Paid plans not set up yet. Please contact support@servicecipher.com. Hint - just use the free one :)");
                           }
                         } catch (err) {
                           console.error("Checkout error:", err);
-                          alert("Checkout failed. Please try again or contact support.");
+                          alert("Paid plans not set up yet. Please contact support@servicecipher.com. Hint - just use the free one :)");
                         }
                       }}
                       style={{ marginTop: "auto", padding: "0.75rem 1.5rem", backgroundColor: "#a1d4c5", color: "#000000", border: "none", borderRadius: "4px", cursor: "pointer", fontWeight: "600" }}
