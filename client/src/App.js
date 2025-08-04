@@ -104,14 +104,22 @@ function App() {
                           document.querySelector('[data-testid="sign-in-button"]').click();
                           return;
                         }
+
+                        const planIdMap = {
+                          basic: "cplan_30nRo3xlAsquhQwMzV8ujV58OJM",
+                          professional: "cplan_30nRybpoieFlQpBCc9uuNewiIq7",
+                        };
+
+                        const selectedPlanId = planIdMap[plan];
+
+                        if (!selectedPlanId) {
+                          alert("Invalid plan selected.");
+                          return;
+                        }
+
                         try {
-                          const response = await fetch("/api/create-checkout-session", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ plan }),
-                          });
-                          const data = await response.json();
-                          if (data.url) window.location.href = data.url;
+                          const { redirectToCheckout } = await import("@clerk/clerk-js");
+                          await redirectToCheckout({ plan: selectedPlanId });
                         } catch (err) {
                           alert("Checkout failed.");
                         }
