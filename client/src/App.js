@@ -1,6 +1,7 @@
 import React from "react";
 import UploadForm from "./UploadForm";
 import "./App.css";
+import "./PricingStyles.css";
 import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignIn, UserButton, useUser } from "@clerk/clerk-react";
 
 // Put your Clerk publishable key here or in index.js as you've already done
@@ -35,9 +36,9 @@ function App() {
       <main>
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
         <SignedOut>
-          <div style={{ textAlign: "center", marginTop: "2rem" }}>
-            <h2>Select a Plan</h2>
-            <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1rem" }}>
+          <div className="plan-selection-container">
+            <h2 className="plan-title">Select a Plan</h2>
+            <div className="plan-buttons">
               {["free", "basic", "professional"].map((plan) => (
                 <button
                   key={plan}
@@ -54,15 +55,7 @@ function App() {
                       alert("Checkout failed.");
                     }
                   }}
-                  style={{
-                    padding: "12px 24px",
-                    borderRadius: "6px",
-                    fontSize: "16px",
-                    cursor: "pointer",
-                    backgroundColor: "#000",
-                    color: "#fff",
-                    border: "none",
-                  }}
+                  className="plan-button"
                 >
                   Choose {plan.charAt(0).toUpperCase() + plan.slice(1)}
                 </button>
