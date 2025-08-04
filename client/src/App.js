@@ -42,7 +42,7 @@ function App() {
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
         <SignedOut>
           <div className="plan-selection-container">
-            <h2 className="plan-title" style={{ fontSize: "18px", color: "#666", justifyContent: "center" }}>If you are not signed up, please select your plan</h2>
+            <h2 className="plan-title" style={{ fontSize: "18px", color: "#666", textAlign: "center" }}>If you are not signed up, please select your plan</h2>
             <div style={{
               display: "flex",
               justifyContent: "center",
@@ -125,6 +125,15 @@ function App() {
                   fontSize: "16px",
                   border: "none",
                   cursor: "pointer",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#cefee1";
+                  e.target.style.color = "#000000";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "#000000";
+                  e.target.style.color = "#ffffff";
                 }}
               >
                 Sign In or Create Account
