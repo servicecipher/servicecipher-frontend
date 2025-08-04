@@ -81,6 +81,10 @@ function App() {
                     <button
                       className="plan-button"
                       onClick={async () => {
+                        if (plan === "free") {
+                          window.location.href = "https://app.servicecipher.com";
+                          return;
+                        }
                         try {
                           const response = await fetch("/api/create-checkout-session", {
                             method: "POST",
