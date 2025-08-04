@@ -13,6 +13,12 @@ function ApprovedUploadOnly({ children }) {
 function App() {
   const { user, isSignedIn } = useUser();
 
+  const planDetails = {
+    free: { label: "Free", price: "$0/mo", description: "Great for trying ServiceCipher." },
+    basic: { label: "Basic", price: "$800/yr", description: "For shops with moderate volume." },
+    professional: { label: "Professional", price: "$1500/yr", description: "For high-volume or multi-location shops." },
+  };
+
   return (
     <div className="app-root">
       {/* --- TOP RIGHT USER BLOCK --- */}
@@ -36,36 +42,43 @@ function App() {
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
         <SignedOut>
           <div className="plan-selection-container">
-            <h2 className="plan-title">Select a Plan</h2>
+            <h2 className="plan-title">If you are not signed up, please select your plan</h2>
             <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginTop: "1rem" }}>
               {["free", "basic", "professional"].map((plan) => (
-                <button
-                  key={plan}
-                  onClick={async () => {
-                    try {
-                      const response = await fetch("/api/create-checkout-session", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ plan }),
-                      });
-                      const data = await response.json();
-                      if (data.url) window.location.href = data.url;
-                    } catch (err) {
-                      alert("Checkout failed.");
-                    }
-                  }}
-                  style={{
-                    backgroundColor: "#000000",
-                    color: "#ffffff",
-                    padding: "12px 24px",
-                    borderRadius: "6px",
-                    fontSize: "16px",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                >
-                  Choose {plan.charAt(0).toUpperCase() + plan.slice(1)}
-                </button>
+                <div key={plan} style={{ textAlign: "center" }}>
+                  <div style={{ marginBottom: "8px", fontWeight: "bold" }}>{planDetails[plan].label}</div>
+                  <div style={{ marginBottom: "4px" }}>{planDetails[plan].price}</div>
+                  <div style={{ marginBottom: "12px", fontSize: "14px", maxWidth: "160px" }}>{planDetails[plan].description}</div>
+                  <button
+                    onClick={async () => {
+                      try {
+                        const response = await fetch("/api/create-checkout-session", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ plan }),
+                        });
+                        const data = await response.json();
+                        if (data.url) window.location.href = data.url;
+                      } catch (err) {
+                        alert("Checkout failed.");
+                      }
+                    }}
+                    style={{
+                      backgroundColor: "#000000",
+                      color: "#ffffff",
+                      padding: "10px 20px",
+                      borderRadius: "6px",
+                      fontSize: "15px",
+                      border: "none",
+                      cursor: "pointer",
+                      transition: "background-color 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = "#cefee1"}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = "#000000"}
+                  >
+                    Choose {planDetails[plan].label}
+                  </button>
+                </div>
               ))}
             </div>
           </div>
