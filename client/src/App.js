@@ -118,9 +118,23 @@ function App() {
                         }
 
                         try {
-                          const { redirectToCheckout } = await import("@clerk/clerk-js");
-                          await redirectToCheckout({ plan: selectedPlanId });
+                          const response = await fetch("/api/create-checkout-session", {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({ planId: selectedPlanId }),
+                          });
+
+                          const data = await response.json();
+
+                          if (data.url) {
+                            window.location.href = data.url;
+                          } else {
+                            alert("Checkout failed.");
+                          }
                         } catch (err) {
+                          console.error("Checkout error:", err);
                           alert("Checkout failed.");
                         }
                       }}
