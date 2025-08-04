@@ -42,7 +42,7 @@ function App() {
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
         <SignedOut>
           <div className="plan-selection-container">
-            <h2 className="plan-title">If you are not signed up, please select your plan</h2>
+            <h2 className="plan-title" style={{ fontSize: "18px", color: "#666" }}>If you are not signed up, please select your plan</h2>
             <div style={{
               display: "flex",
               justifyContent: "center",
@@ -57,16 +57,18 @@ function App() {
                   borderRadius: "12px",
                   padding: "20px",
                   width: "240px",
-                  backgroundColor: "#ffffff",
+                  backgroundColor: "#f5fffa",
                   boxShadow: "0px 4px 10px rgba(0,0,0,0.08)",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
+                  alignItems: "center",
+                  textAlign: "center",
                   gap: "12px"
                 }}>
                   <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontWeight: "bold" }}>{planDetails[plan].label}</div>
                   <div style={{ margin: "0", padding: "0", lineHeight: "1.4" }}>{planDetails[plan].price}</div>
-                  <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px", maxWidth: "160px" }}>{planDetails[plan].description}</div>
+                  <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px" }}>{planDetails[plan].description}</div>
                   <button
                     className="plan-button"
                     style={{
@@ -77,7 +79,8 @@ function App() {
                       fontSize: "14px",
                       border: "none",
                       cursor: "pointer",
-                      transition: "all 0.3s ease"
+                      transition: "all 0.3s ease",
+                      height: "40px"
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = "#cefee1";
