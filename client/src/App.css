@@ -446,7 +446,7 @@ main {
 .pricing-heading {
   font-size: 1.6rem;
   color: #a0a4c0;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 
@@ -465,11 +465,11 @@ main {
 }
 
 .plan-card {
-  border-radius: 16px;
-  padding: 28px 24px;
+  border-radius: 20px;
+  padding: 32px 28px;
   text-align: center;
-  width: 270px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -489,19 +489,19 @@ main {
 }
 
 .plan-icon {
-  font-size: 1.6rem;
-  margin-bottom: 8px;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 
 .plan-name {
-  font-weight: bold;
-  font-size: 1.4rem;
+  font-weight: 700;
+  font-size: 1.6rem;
   margin-bottom: 6px;
 }
 
 .plan-pricing {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 800;
   margin: 4px 0;
 }
 
@@ -512,28 +512,30 @@ main {
 }
 
 .plan-yearly {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+  color: #333333;
 }
 
 .plan-description {
-  font-size: 0.95rem;
-  margin: 10px 0 18px;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 12px 0 22px;
+  color: #222;
 }
 
 .plan-button {
   background: #000000;
   color: #ffffff;
   border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
+  border-radius: 12px;
+  padding: 12px 24px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.25s;
 }
-
 .plan-button:hover {
   background: #cefee1;
   color: #000000;
@@ -542,10 +544,10 @@ main {
 /* Most Popular Label */
 .most-popular {
   color: #c59a00;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 2px;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
 }

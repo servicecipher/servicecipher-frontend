@@ -47,26 +47,29 @@ function App() {
             <h2 className="plan-title">If you are not signed up, please select your plan</h2>
             <div className="plan-selection-wrapper">
               {["free", "basic", "professional"].map((plan) => {
-                let planClass = "plan-card ";
-                if (plan === "free") planClass += "plan-free";
-                else if (plan === "basic") planClass += "plan-basic";
-                else if (plan === "professional") planClass += "plan-professional";
+                const isPopular = plan === "basic";
+                const { label, monthly, price, description } = planDetails[plan];
 
                 return (
-                  <div key={plan} className={planClass}>
-                    <div className="plan-icon" style={plan === "basic" ? { color: "#b8860b", fontWeight: "bold" } : {}}>
-                      {plan === "free" ? "🔓" : plan === "basic" ? "★ Most Popular" : plan === "professional" ? "💼" : ""}
-                    </div>
-                    <div className="plan-name">{planDetails[plan].label}</div>
-                    <div className="plan-pricing">
-                      <div className="plan-monthly">
-                        {planDetails[plan].monthly}<span className="plan-monthly-suffix">/mo</span>
+                  <div key={plan} className={`plan-card ${plan}`}>
+                    {isPopular && (
+                      <div className="plan-popular-badge">
+                        ★ Most Popular
                       </div>
-                      <div className="plan-yearly">
-                        {planDetails[plan].price}/yr
+                    )}
+                    <div className="plan-icon">
+                      {plan === "free" ? "🔓" : plan === "professional" ? "💼" : ""}
+                    </div>
+                    <div className="plan-name">{label}</div>
+                    <div className="plan-price">
+                      <div className="monthly">
+                        {monthly}<span className="unit">/mo</span>
+                      </div>
+                      <div className="yearly">
+                        {price}<span className="unit">/yr</span>
                       </div>
                     </div>
-                    <div className="plan-description">{planDetails[plan].description}</div>
+                    <div className="plan-description">{description}</div>
                     <button
                       className="plan-button"
                       onClick={async () => {
@@ -83,7 +86,7 @@ function App() {
                         }
                       }}
                     >
-                      Choose {planDetails[plan].label}
+                      Choose {label}
                     </button>
                   </div>
                 );
