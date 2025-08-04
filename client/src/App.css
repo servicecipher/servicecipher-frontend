@@ -487,12 +487,13 @@ main {
 }
 
 .plan-basic {
-  background: #fff6d6;
-  border: 2px solid #e5ba47;
+  background: #cefee1;
+  border: 2px solid #a1d4c5;
 }
 
 .plan-professional {
-  background: #a1d4c5;
+  background: #cefee1;
+  border: 2px solid #a1d4c5;
 }
 
 .plan-icon {
@@ -552,7 +553,7 @@ main {
 
 /* Most Popular Label */
 .most-popular {
-  background: #fff6d6;
+  background: #cefee1;
   padding: 4px 10px;
   border-radius: 12px;
   color: #000000;
