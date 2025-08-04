@@ -31,6 +31,16 @@ function App() {
         </div>
       </SignedIn>
 
+      <SignedOut>
+        <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
+          <SignInButton mode="modal">
+            <button className="plan-button" data-testid="sign-in-button">
+              Sign In or Create Account
+            </button>
+          </SignInButton>
+        </div>
+      </SignedOut>
+
       <header>
         <img
           src="/horizontal_logo_tag.png"
@@ -117,16 +127,6 @@ function App() {
           </div>
         </SignedOut>
 
-        {/* Login Block */}
-        <SignedOut>
-          <div style={{ textAlign: "center", marginTop: "3rem" }}>
-            <SignInButton mode="modal">
-              <button className="plan-button" data-testid="sign-in-button">
-                Sign In or Create Account
-              </button>
-            </SignInButton>
-          </div>
-        </SignedOut>
 
         {/* Only approved users can upload */}
         <SignedIn>
