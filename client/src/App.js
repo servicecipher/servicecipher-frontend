@@ -117,15 +117,13 @@ function App() {
                           return;
                         }
 
-                        const userId = user?.id;
-
                         try {
                           const response = await fetch("/api/create-checkout-session", {
                             method: "POST",
                             headers: {
                               "Content-Type": "application/json",
                             },
-                            body: JSON.stringify({ planId: selectedPlanId, userId }),
+                            body: JSON.stringify({ planId: selectedPlanId }),
                           });
 
                           if (!response.ok) {
@@ -137,11 +135,11 @@ function App() {
                           if (data.url) {
                             window.location.href = data.url;
                           } else {
-                            alert("Checkout failed.");
+                            alert("Checkout failed. Please try again or contact support.");
                           }
                         } catch (err) {
                           console.error("Checkout error:", err);
-                          alert("Checkout failed.");
+                          alert("Checkout failed. Please try again or contact support.");
                         }
                       }}
                       style={{ marginTop: "auto", padding: "0.75rem 1.5rem", backgroundColor: "#a1d4c5", color: "#000000", border: "none", borderRadius: "4px", cursor: "pointer", fontWeight: "600" }}
