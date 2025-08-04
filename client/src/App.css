@@ -428,3 +428,66 @@ main {
     background: #cefee1;
   }
 }
+/* PRICING PLAN SELECTION STYLES */
+.pricing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.pricing-logo {
+  max-width: 180px;
+  margin-bottom: 20px;
+}
+
+.pricing-heading {
+  font-size: 1.6rem;
+  color: #a0a4c0;
+  margin-bottom: 30px;
+}
+
+.pricing-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.pricing-button {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 22px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.25s, transform 0.1s;
+}
+
+.pricing-button:hover {
+  background: #a1d4c5;
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+.pricing-signin {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 26px;
+  font-size: 1.15rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.pricing-signin:hover {
+  background: #cefee1;
+  color: #000000;
+}
