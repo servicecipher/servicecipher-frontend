@@ -117,7 +117,7 @@ function App() {
                           return;
                         }
 
-                        const userId = window.Clerk?.user?.id;
+                        const userId = user?.id;
 
                         try {
                           const response = await fetch("/api/create-checkout-session", {
