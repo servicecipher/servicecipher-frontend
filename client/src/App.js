@@ -64,7 +64,7 @@ function App() {
                   name: "Pro",
                   price: "$125/mo",
                   desc: "Up to 500 reports/mo. Ideal for busy shops or growing teams.",
-                  key: "pro",
+                  key: "professional",
                 },
               ].map((plan) => (
                 <div
@@ -85,9 +85,7 @@ function App() {
                   <h2 style={{ margin: "10px 0" }}>{plan.price}</h2>
                   <p>{plan.desc}</p>
                   <a
-                    href={`https://accounts.servicecipher.com/sign-up?plan=${
-                      plan.name === "Free" ? "free" : plan.name === "Basic" ? "basic" : "professional"
-                    }&redirect_url=https://app.servicecipher.com`}
+                    href={`https://accounts.servicecipher.com/sign-up?plan=${plan.key}&redirect_url=https://app.servicecipher.com`}
                     style={{
                       display: "inline-block",
                       marginTop: "10px",
