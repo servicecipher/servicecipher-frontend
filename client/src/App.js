@@ -45,7 +45,16 @@ function App() {
         <SignedOut>
           <div className="plan-selection-container" style={{ textAlign: "center" }}>
             <h2 className="plan-title">If you are not signed up, please select your plan</h2>
-            <div className="plan-selection-wrapper" style={{ display: "flex", justifyContent: "center", gap: "2rem" }}>
+            <div
+              className="plan-selection-wrapper"
+              style={{
+                display: "flex",
+                flexDirection: window.innerWidth < 640 ? "column" : "row",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "2rem"
+              }}
+            >
               {["free", "basic", "professional"].map((plan) => {
                 const isPopular = plan === "basic";
                 const { label, monthly, price, description } = planDetails[plan];
