@@ -36,9 +36,8 @@ function App() {
           src="/horizontal_logo_tag.png"
           alt="ServiceCipher logo"
           className="logo"
-          style={{ marginBottom: "2rem" }}
+          style={{ margin: "0", paddingTop: "1rem", paddingBottom: "0.5rem" }}
         />
-       
       </header>
 
       <main className="main-content">
@@ -57,14 +56,10 @@ function App() {
                       <div
                         className="plan-popular-badge"
                         style={{
-                          backgroundColor: "#a1d4c5",
-                          color: "#000000",
+                          color: "#b38b00",
                           fontWeight: "bold",
-                          padding: "0.4rem 0.75rem",
-                          fontSize: "0.85rem",
-                          borderRadius: "4px",
-                          display: "inline-block",
-                          marginBottom: "0.75rem"
+                          fontSize: "0.9rem",
+                          marginBottom: "0.5rem"
                         }}
                       >
                         ★ Most Popular
