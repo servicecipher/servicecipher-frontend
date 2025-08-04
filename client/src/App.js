@@ -40,7 +40,7 @@ function App() {
        
       </header>
 
-      <main style={{ marginTop: "0.5rem" }}>
+      <main style={{ marginTop: "2rem" }}>
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
         <SignedOut>
           <div className="plan-selection-container">
@@ -74,7 +74,7 @@ function App() {
                     gap: "12px"
                   }}>
                     <div style={{
-                      color: plan === "basic" ? "#b8860b" : "transparent",
+                      color: plan === "basic" ? "#b8860b" : "#000",
                       fontWeight: "bold",
                       fontSize: "13px",
                       height: "16px"
@@ -86,7 +86,7 @@ function App() {
                       {planDetails[plan].monthly}<span style={{ fontSize: "14px", fontWeight: "600" }}>/mo</span>
                     </div>
                     <div style={{ fontSize: "16px", fontWeight: "600", fontFamily: "sans-serif", color: "#333" }}>
-                      {planDetails[plan].price}
+                      {planDetails[plan].price}<span style={{ fontSize: "14px", fontWeight: "600" }}>/yr</span>
                     </div>
                     <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px" }}>{planDetails[plan].description}</div>
                     <button
