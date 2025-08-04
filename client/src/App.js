@@ -42,7 +42,7 @@ function App() {
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
         <SignedOut>
           <div className="plan-selection-container">
-            <h2 className="plan-title" style={{ fontSize: "18px", color: "#666" }}>If you are not signed up, please select your plan</h2>
+            <h2 className="plan-title" style={{ fontSize: "18px", color: "#666", justifyContent: "center" }}>If you are not signed up, please select your plan</h2>
             <div style={{
               display: "flex",
               justifyContent: "center",
