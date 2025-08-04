@@ -1,7 +1,7 @@
 import React from "react";
 import UploadForm from "./UploadForm";
 import "./App.css";
-import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignIn, UserButton, useUser, PricingTable } from "@clerk/clerk-react";
+import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignIn, UserButton, useUser } from "@clerk/clerk-react";
 
 // Put your Clerk publishable key here or in index.js as you've already done
 // const clerkPubKey = "pk_test_..."; // not needed if in index.js
@@ -35,11 +35,7 @@ function App() {
       <main>
         {/* Login Block */}
         <SignedOut>
-          <div style={{ maxWidth: "800px", margin: "auto", padding: "2rem 1rem" }}>
-            <h2 style={{ textAlign: "center" }}>Choose Your Plan</h2>
-            <PricingTable />
-          </div>
-          <div style={{ textAlign: "center", marginTop: "2rem" }}>
+          <div style={{ textAlign: "center", marginTop: "3rem" }}>
             <SignInButton mode="modal">
               <button
                 style={{
@@ -52,7 +48,7 @@ function App() {
                   cursor: "pointer",
                 }}
               >
-                Sign In
+                Sign In or Create Account
               </button>
             </SignInButton>
           </div>
