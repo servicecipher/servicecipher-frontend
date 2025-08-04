@@ -31,6 +31,15 @@ function App() {
         </div>
       </SignedIn>
 
+      <header>
+        <img
+          src="/horizontal_logo_tag.png"
+          alt="ServiceCipher logo"
+          className="logo"
+          style={{ margin: "0", paddingTop: "1rem", paddingBottom: "0.5rem" }}
+        />
+      </header>
+
       <SignedOut>
         <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
           <SignInButton mode="modal">
@@ -40,15 +49,6 @@ function App() {
           </SignInButton>
         </div>
       </SignedOut>
-
-      <header>
-        <img
-          src="/horizontal_logo_tag.png"
-          alt="ServiceCipher logo"
-          className="logo"
-          style={{ margin: "0", paddingTop: "1rem", paddingBottom: "0.5rem" }}
-        />
-      </header>
 
       <main className="main-content">
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
