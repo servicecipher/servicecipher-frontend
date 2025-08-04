@@ -43,13 +43,28 @@ function App() {
         <SignedOut>
           <div className="plan-selection-container">
             <h2 className="plan-title">If you are not signed up, please select your plan</h2>
-            <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginTop: "1rem" }}>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "30px",
+              marginTop: "1rem",
+              flexWrap: "wrap"
+            }}>
               {["free", "basic", "professional"].map((plan) => (
-                <div key={plan} style={{ textAlign: "center" }}>
+                <div key={plan} style={{
+                  textAlign: "center",
+                  border: "1px solid #ccc",
+                  borderRadius: "8px",
+                  padding: "20px",
+                  width: "220px",
+                  backgroundColor: "#ffffff",
+                  boxShadow: "0px 2px 6px rgba(0,0,0,0.1)"
+                }}>
                   <div style={{ marginBottom: "8px", fontWeight: "bold" }}>{planDetails[plan].label}</div>
                   <div style={{ marginBottom: "4px" }}>{planDetails[plan].price}</div>
                   <div style={{ marginBottom: "12px", fontSize: "14px", maxWidth: "160px" }}>{planDetails[plan].description}</div>
                   <button
+                    className="plan-button"
                     onClick={async () => {
                       try {
                         const response = await fetch("/api/create-checkout-session", {
@@ -63,18 +78,6 @@ function App() {
                         alert("Checkout failed.");
                       }
                     }}
-                    style={{
-                      backgroundColor: "#000000",
-                      color: "#ffffff",
-                      padding: "10px 20px",
-                      borderRadius: "6px",
-                      fontSize: "15px",
-                      border: "none",
-                      cursor: "pointer",
-                      transition: "background-color 0.3s ease",
-                    }}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#cefee1"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#000000"}
                   >
                     Choose {planDetails[plan].label}
                   </button>
