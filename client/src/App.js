@@ -3,6 +3,8 @@ import UploadForm from "./UploadForm";
 import "./App.css";
 import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignIn, UserButton, useUser } from "@clerk/clerk-react";
 
+// TODO: Clean up plan styles into App.css for better reuse and maintainability
+
 // Put your Clerk publishable key here or in index.js as you've already done
 // const clerkPubKey = "pk_test_..."; // not needed if in index.js
 
@@ -14,9 +16,9 @@ function App() {
   const { user, isSignedIn } = useUser();
 
   const planDetails = {
-    free: { label: "Free", monthly: "$0", price: "$0/yr", description: "Great for trying ServiceCipher." },
-    basic: { label: "Basic", monthly: "$67", price: "$800/yr", description: "For shops with moderate volume." },
-    professional: { label: "Professional", monthly: "$125", price: "$1500/yr", description: "For high-volume or multi-location shops." },
+    free: { label: "Free", monthly: "$0", price: "$0", description: "Great for trying ServiceCipher." },
+    basic: { label: "Basic", monthly: "$67", price: "$800", description: "For shops with moderate volume." },
+    professional: { label: "Professional", monthly: "$125", price: "$1500", description: "For high-volume or multi-location shops." },
   };
 
   return (
@@ -38,7 +40,7 @@ function App() {
        
       </header>
 
-      <main>
+      <main style={{ marginTop: "0.5rem" }}>
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
         <SignedOut>
           <div className="plan-selection-container">
@@ -84,7 +86,7 @@ function App() {
                       {planDetails[plan].monthly}<span style={{ fontSize: "14px", fontWeight: "600" }}>/mo</span>
                     </div>
                     <div style={{ fontSize: "16px", fontWeight: "600", fontFamily: "sans-serif", color: "#333" }}>
-                      {planDetails[plan].price}<span style={{ fontSize: "13px", fontWeight: "400" }}>/yr</span>
+                      {planDetails[plan].price}
                     </div>
                     <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px" }}>{planDetails[plan].description}</div>
                     <button
