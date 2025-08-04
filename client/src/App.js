@@ -50,64 +50,75 @@ function App() {
               marginTop: "1rem",
               flexWrap: "wrap"
             }}>
-              {["free", "basic", "professional"].map((plan) => (
-                <div key={plan} style={{
-                  textAlign: "center",
-                  border: "1px solid #ccc",
-                  borderRadius: "12px",
-                  padding: "20px",
-                  width: "240px",
-                  backgroundColor: "#ffffff",
-                  boxShadow: "0px 4px 10px rgba(0,0,0,0.08)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  textAlign: "center",
-                  gap: "12px"
-                }}>
-                  <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontWeight: "bold" }}>{planDetails[plan].label}</div>
-                  <div style={{ margin: "0", padding: "0", lineHeight: "1.4" }}>{planDetails[plan].price}</div>
-                  <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px" }}>{planDetails[plan].description}</div>
-                  <button
-                    className="plan-button"
-                    style={{
-                      backgroundColor: "#000000",
-                      color: "#ffffff",
-                      padding: "10px 16px",
-                      borderRadius: "6px",
-                      fontSize: "14px",
-                      border: "none",
-                      cursor: "pointer",
-                      transition: "all 0.3s ease",
-                      height: "40px"
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = "#cefee1";
-                      e.target.style.color = "#000000";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = "#000000";
-                      e.target.style.color = "#ffffff";
-                    }}
-                    onClick={async () => {
-                      try {
-                        const response = await fetch("/api/create-checkout-session", {
-                          method: "POST",
-                          headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({ plan }),
-                        });
-                        const data = await response.json();
-                        if (data.url) window.location.href = data.url;
-                      } catch (err) {
-                        alert("Checkout failed.");
-                      }
-                    }}
-                  >
-                    Choose {planDetails[plan].label}
-                  </button>
-                </div>
-              ))}
+              {["free", "basic", "professional"].map((plan) => {
+                let backgroundColor = "#ffffff";
+                if (plan === "free") backgroundColor = "#f5f5f5";
+                if (plan === "basic") backgroundColor = "#fff8dc";
+                if (plan === "professional") backgroundColor = "#e6f7ff";
+
+                return (
+                  <div key={plan} style={{
+                    textAlign: "center",
+                    border: "1px solid #ccc",
+                    borderRadius: "12px",
+                    padding: "20px",
+                    width: "240px",
+                    backgroundColor,
+                    boxShadow: "0px 4px 10px rgba(0,0,0,0.08)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "12px"
+                  }}>
+                    {plan === "basic" && (
+                      <div style={{ color: "#b8860b", fontWeight: "bold", fontSize: "13px" }}>
+                        ★ Most Popular
+                      </div>
+                    )}
+                    <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontWeight: "bold" }}>{planDetails[plan].label}</div>
+                    <div style={{ margin: "0", padding: "0", lineHeight: "1.4" }}>{planDetails[plan].price}</div>
+                    <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px" }}>{planDetails[plan].description}</div>
+                    <button
+                      className="plan-button"
+                      style={{
+                        backgroundColor: "#000000",
+                        color: "#ffffff",
+                        padding: "10px 16px",
+                        borderRadius: "6px",
+                        fontSize: "14px",
+                        border: "none",
+                        cursor: "pointer",
+                        transition: "all 0.3s ease",
+                        height: "40px"
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.backgroundColor = "#cefee1";
+                        e.target.style.color = "#000000";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.backgroundColor = "#000000";
+                        e.target.style.color = "#ffffff";
+                      }}
+                      onClick={async () => {
+                        try {
+                          const response = await fetch("/api/create-checkout-session", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ plan }),
+                          });
+                          const data = await response.json();
+                          if (data.url) window.location.href = data.url;
+                        } catch (err) {
+                          alert("Checkout failed.");
+                        }
+                      }}
+                    >
+                      Choose {planDetails[plan].label}
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </SignedOut>
