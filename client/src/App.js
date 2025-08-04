@@ -40,76 +40,35 @@ function App() {
        
       </header>
 
-      <main style={{ marginTop: "2rem" }}>
+      <main className="main-content">
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
         <SignedOut>
           <div className="plan-selection-container">
-            <h2 className="plan-title" style={{ fontSize: "18px", color: "#666", textAlign: "center" }}>If you are not signed up, please select your plan</h2>
-            <div style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "30px",
-              marginTop: "1rem",
-              flexWrap: "wrap"
-            }}>
+            <h2 className="plan-title">If you are not signed up, please select your plan</h2>
+            <div className="plan-selection-wrapper">
               {["free", "basic", "professional"].map((plan) => {
-                let backgroundColor = "#ffffff";
-                if (plan === "free") backgroundColor = "#cefee1"; // mint
-                if (plan === "basic") backgroundColor = "#fff8dc"; // light gold
-                if (plan === "professional") backgroundColor = "#a1d4c5"; // light teal
+                let planClass = "plan-card ";
+                if (plan === "free") planClass += "plan-free";
+                else if (plan === "basic") planClass += "plan-basic";
+                else if (plan === "professional") planClass += "plan-professional";
 
                 return (
-                  <div key={plan} style={{
-                    textAlign: "center",
-                    border: "1px solid #ccc",
-                    borderRadius: "12px",
-                    padding: "20px",
-                    width: "240px",
-                    backgroundColor,
-                    boxShadow: "0px 4px 10px rgba(0,0,0,0.08)",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: "12px"
-                  }}>
-                    <div style={{
-                      color: plan === "basic" ? "#b8860b" : "#000",
-                      fontWeight: "bold",
-                      fontSize: "13px",
-                      height: "16px"
-                    }}>
+                  <div key={plan} className={planClass}>
+                    <div className="plan-icon" style={plan === "basic" ? { color: "#b8860b", fontWeight: "bold" } : {}}>
                       {plan === "free" ? "🔓" : plan === "basic" ? "★ Most Popular" : plan === "professional" ? "💼" : ""}
                     </div>
-                    <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontWeight: "bold" }}>{planDetails[plan].label}</div>
-                    <div style={{ fontSize: "20px", fontWeight: "800", fontFamily: "sans-serif", lineHeight: "1.2" }}>
-                      {planDetails[plan].monthly}<span style={{ fontSize: "14px", fontWeight: "600" }}>/mo</span>
+                    <div className="plan-name">{planDetails[plan].label}</div>
+                    <div className="plan-pricing">
+                      <div className="plan-monthly">
+                        {planDetails[plan].monthly}<span className="plan-monthly-suffix">/mo</span>
+                      </div>
+                      <div className="plan-yearly">
+                        {planDetails[plan].price}/yr
+                      </div>
                     </div>
-                    <div style={{ fontSize: "16px", fontWeight: "600", fontFamily: "sans-serif", color: "#333" }}>
-                      {planDetails[plan].price}<span style={{ fontSize: "14px", fontWeight: "600" }}>/yr</span>
-                    </div>
-                    <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px" }}>{planDetails[plan].description}</div>
+                    <div className="plan-description">{planDetails[plan].description}</div>
                     <button
                       className="plan-button"
-                      style={{
-                        backgroundColor: "#000000",
-                        color: "#ffffff",
-                        padding: "10px 16px",
-                        borderRadius: "6px",
-                        fontSize: "14px",
-                        border: "none",
-                        cursor: "pointer",
-                        transition: "all 0.3s ease",
-                        height: "40px"
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = "#cefee1";
-                        e.target.style.color = "#000000";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = "#000000";
-                        e.target.style.color = "#ffffff";
-                      }}
                       onClick={async () => {
                         try {
                           const response = await fetch("/api/create-checkout-session", {
@@ -137,26 +96,7 @@ function App() {
         <SignedOut>
           <div style={{ textAlign: "center", marginTop: "3rem" }}>
             <SignInButton mode="modal">
-              <button
-                style={{
-                  backgroundColor: "#000000",
-                  color: "#ffffff",
-                  padding: "12px 24px",
-                  borderRadius: "6px",
-                  fontSize: "16px",
-                  border: "none",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease"
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = "#cefee1";
-                  e.target.style.color = "#000000";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = "#000000";
-                  e.target.style.color = "#ffffff";
-                }}
-              >
+              <button className="plan-button">
                 Sign In or Create Account
               </button>
             </SignInButton>

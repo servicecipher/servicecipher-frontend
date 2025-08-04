@@ -449,45 +449,103 @@ main {
   margin-bottom: 30px;
 }
 
-.pricing-buttons {
+
+/* NEW PRICING CARDS */
+.main-content {
+  margin-top: 40px;
+}
+
+.pricing-cards {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 28px;
   justify-content: center;
-  margin-bottom: 32px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
-.pricing-button {
-  background: #000000;
-  color: #ffffff;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 22px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.25s, transform 0.1s;
+.plan-card {
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  width: 270px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.pricing-button:hover {
+.plan-free {
+  background: #cefee1;
+}
+
+.plan-basic {
+  background: #fff6d6;
+  border: 2px solid #f1cf79;
+}
+
+.plan-professional {
   background: #a1d4c5;
-  color: #000000;
-  transform: translateY(-1px);
 }
 
-.pricing-signin {
+.plan-icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.plan-name {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.plan-pricing {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 4px 0;
+}
+
+.plan-pricing span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.plan-yearly {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.plan-description {
+  font-size: 0.95rem;
+  margin: 10px 0 18px;
+}
+
+.plan-button {
   background: #000000;
   color: #ffffff;
   border: none;
   border-radius: 10px;
-  padding: 14px 26px;
-  font-size: 1.15rem;
+  padding: 10px 20px;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.25s;
 }
 
-.pricing-signin:hover {
+.plan-button:hover {
   background: #cefee1;
   color: #000000;
+}
+
+/* Most Popular Label */
+.most-popular {
+  color: #c59a00;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
