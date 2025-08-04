@@ -77,11 +77,15 @@ function App() {
                       fontSize: "13px",
                       height: "16px"
                     }}>
-                      {plan === "basic" ? "★ Most Popular" : "★"}
+                      {plan === "free" ? "🔓" : plan === "basic" ? "★ Most Popular" : plan === "professional" ? "💼" : ""}
                     </div>
                     <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontWeight: "bold" }}>{planDetails[plan].label}</div>
-                    <div style={{ fontSize: "14px", fontWeight: "bold" }}>{planDetails[plan].monthly}/mo</div>
-                    <div style={{ margin: "0", padding: "0", lineHeight: "1.4" }}>{planDetails[plan].price}</div>
+                    <div style={{ fontSize: "20px", fontWeight: "800", fontFamily: "sans-serif", lineHeight: "1.2" }}>
+                      {planDetails[plan].monthly}<span style={{ fontSize: "14px", fontWeight: "600" }}>/mo</span>
+                    </div>
+                    <div style={{ fontSize: "16px", fontWeight: "600", fontFamily: "sans-serif", color: "#333" }}>
+                      {planDetails[plan].price}<span style={{ fontSize: "13px", fontWeight: "400" }}>/yr</span>
+                    </div>
                     <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px" }}>{planDetails[plan].description}</div>
                     <button
                       className="plan-button"
