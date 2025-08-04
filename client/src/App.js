@@ -123,7 +123,7 @@ function App() {
                             headers: {
                               "Content-Type": "application/json",
                             },
-                            body: JSON.stringify({ planId: selectedPlanId }),
+                            body: JSON.stringify({ planId: selectedPlanId, userId: user?.id }),
                           });
 
                           const data = await response.json();
