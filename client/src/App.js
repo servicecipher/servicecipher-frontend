@@ -36,6 +36,7 @@ function App() {
           src="/horizontal_logo_tag.png"
           alt="ServiceCipher logo"
           className="logo"
+          style={{ marginBottom: "2rem" }}
         />
        
       </header>
@@ -43,33 +44,33 @@ function App() {
       <main className="main-content">
         {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
         <SignedOut>
-          <div className="plan-selection-container">
+          <div className="plan-selection-container" style={{ textAlign: "center" }}>
             <h2 className="plan-title">If you are not signed up, please select your plan</h2>
-            <div className="plan-selection-wrapper">
+            <div className="plan-selection-wrapper" style={{ display: "flex", justifyContent: "center", gap: "2rem" }}>
               {["free", "basic", "professional"].map((plan) => {
                 const isPopular = plan === "basic";
                 const { label, monthly, price, description } = planDetails[plan];
 
                 return (
-                  <div key={plan} className={`plan-card ${plan}`}>
+                  <div key={plan} className={`plan-card ${plan}`} style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "1.5rem", borderRadius: "8px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", gap: "1rem", position: "relative", width: "250px" }}>
                     {isPopular && (
-                      <div className="plan-popular-badge">
+                      <div className="plan-popular-badge" style={{ position: "absolute", top: "1rem", right: "1rem", backgroundColor: "#6b46c1", color: "white", padding: "0.25rem 0.75rem", borderRadius: "9999px", fontWeight: "bold", fontSize: "0.75rem" }}>
                         ★ Most Popular
                       </div>
                     )}
-                    <div className="plan-icon">
+                    <div className="plan-icon" style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>
                       {plan === "free" ? "🔓" : plan === "professional" ? "💼" : ""}
                     </div>
-                    <div className="plan-name">{label}</div>
-                    <div className="plan-price">
+                    <div className="plan-name" style={{ fontWeight: "bold", fontSize: "1.25rem" }}>{label}</div>
+                    <div className="plan-price" style={{ fontWeight: "700", fontSize: "1.5rem", color: "#6b46c1" }}>
                       <div className="monthly">
-                        {monthly}<span className="unit">/mo</span>
+                        {monthly}<span className="unit" style={{ fontWeight: "400", fontSize: "1rem" }}>/mo</span>
                       </div>
-                      <div className="yearly">
+                      <div className="yearly" style={{ fontWeight: "400", fontSize: "0.875rem", color: "#718096" }}>
                         {price}<span className="unit">/yr</span>
                       </div>
                     </div>
-                    <div className="plan-description">{description}</div>
+                    <div className="plan-description" style={{ color: "#718096", fontSize: "0.9rem", textAlign: "center" }}>{description}</div>
                     <button
                       className="plan-button"
                       onClick={async () => {
@@ -85,8 +86,9 @@ function App() {
                           alert("Checkout failed.");
                         }
                       }}
+                      style={{ marginTop: "auto", padding: "0.75rem 1.5rem", backgroundColor: "#6b46c1", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontWeight: "600" }}
                     >
-                      Choose {label}
+                      Select Plan
                     </button>
                   </div>
                 );
