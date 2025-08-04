@@ -52,9 +52,9 @@ function App() {
             }}>
               {["free", "basic", "professional"].map((plan) => {
                 let backgroundColor = "#ffffff";
-                if (plan === "free") backgroundColor = "#f5f5f5";
-                if (plan === "basic") backgroundColor = "#fff8dc";
-                if (plan === "professional") backgroundColor = "#e6f7ff";
+                if (plan === "free") backgroundColor = "#cefee1"; // mint
+                if (plan === "basic") backgroundColor = "#fff8dc"; // light gold
+                if (plan === "professional") backgroundColor = "#a1d4c5"; // light teal
 
                 return (
                   <div key={plan} style={{
