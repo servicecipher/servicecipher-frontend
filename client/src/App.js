@@ -14,9 +14,9 @@ function App() {
   const { user, isSignedIn } = useUser();
 
   const planDetails = {
-    free: { label: "Free", price: "$0/mo", description: "Great for trying ServiceCipher." },
-    basic: { label: "Basic", price: "$800/yr", description: "For shops with moderate volume." },
-    professional: { label: "Professional", price: "$1500/yr", description: "For high-volume or multi-location shops." },
+    free: { label: "Free", monthly: "$0", price: "$0/yr", description: "Great for trying ServiceCipher." },
+    basic: { label: "Basic", monthly: "$67", price: "$800/yr", description: "For shops with moderate volume." },
+    professional: { label: "Professional", monthly: "$125", price: "$1500/yr", description: "For high-volume or multi-location shops." },
   };
 
   return (
@@ -71,12 +71,16 @@ function App() {
                     alignItems: "center",
                     gap: "12px"
                   }}>
-                    {plan === "basic" && (
-                      <div style={{ color: "#b8860b", fontWeight: "bold", fontSize: "13px" }}>
-                        ★ Most Popular
-                      </div>
-                    )}
+                    <div style={{
+                      color: plan === "basic" ? "#b8860b" : "transparent",
+                      fontWeight: "bold",
+                      fontSize: "13px",
+                      height: "16px"
+                    }}>
+                      {plan === "basic" ? "★ Most Popular" : "★"}
+                    </div>
                     <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontWeight: "bold" }}>{planDetails[plan].label}</div>
+                    <div style={{ fontSize: "14px", fontWeight: "bold" }}>{planDetails[plan].monthly}/mo</div>
                     <div style={{ margin: "0", padding: "0", lineHeight: "1.4" }}>{planDetails[plan].price}</div>
                     <div style={{ margin: "0", padding: "0", lineHeight: "1.4", fontSize: "14px" }}>{planDetails[plan].description}</div>
                     <button
