@@ -33,41 +33,43 @@ function App() {
       </header>
 
       <main>
-        {/* Choose Plan Buttons (Stripe Checkout) */}
-        <div style={{ textAlign: "center", marginTop: "2rem" }}>
-          <h2>Select a Plan</h2>
-          <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1rem" }}>
-            {["free", "basic", "professional"].map((plan) => (
-              <button
-                key={plan}
-                onClick={async () => {
-                  try {
-                    const response = await fetch("/api/create-checkout-session", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ plan }),
-                    });
-                    const data = await response.json();
-                    if (data.url) window.location.href = data.url;
-                  } catch (err) {
-                    alert("Checkout failed.");
-                  }
-                }}
-                style={{
-                  padding: "12px 24px",
-                  borderRadius: "6px",
-                  fontSize: "16px",
-                  cursor: "pointer",
-                  backgroundColor: "#000",
-                  color: "#fff",
-                  border: "none",
-                }}
-              >
-                Choose {plan.charAt(0).toUpperCase() + plan.slice(1)}
-              </button>
-            ))}
+        {/* Choose Plan Buttons (Stripe Checkout) - Only for signed out users */}
+        <SignedOut>
+          <div style={{ textAlign: "center", marginTop: "2rem" }}>
+            <h2>Select a Plan</h2>
+            <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1rem" }}>
+              {["free", "basic", "professional"].map((plan) => (
+                <button
+                  key={plan}
+                  onClick={async () => {
+                    try {
+                      const response = await fetch("/api/create-checkout-session", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ plan }),
+                      });
+                      const data = await response.json();
+                      if (data.url) window.location.href = data.url;
+                    } catch (err) {
+                      alert("Checkout failed.");
+                    }
+                  }}
+                  style={{
+                    padding: "12px 24px",
+                    borderRadius: "6px",
+                    fontSize: "16px",
+                    cursor: "pointer",
+                    backgroundColor: "#000",
+                    color: "#fff",
+                    border: "none",
+                  }}
+                >
+                  Choose {plan.charAt(0).toUpperCase() + plan.slice(1)}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </SignedOut>
 
         {/* Login Block */}
         <SignedOut>
