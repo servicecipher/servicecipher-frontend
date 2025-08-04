@@ -117,13 +117,15 @@ function App() {
                           return;
                         }
 
+                        const userId = window.Clerk?.user?.id;
+
                         try {
                           const response = await fetch("/api/create-checkout-session", {
                             method: "POST",
                             headers: {
                               "Content-Type": "application/json",
                             },
-                            body: JSON.stringify({ planId: selectedPlanId }),
+                            body: JSON.stringify({ planId: selectedPlanId, userId }),
                           });
 
                           if (!response.ok) {
