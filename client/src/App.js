@@ -52,25 +52,25 @@ function App() {
                 const { label, monthly, price, description } = planDetails[plan];
 
                 return (
-                  <div key={plan} className={`plan-card ${plan}`} style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "1.5rem", borderRadius: "8px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", gap: "1rem", position: "relative", width: "250px" }}>
+                  <div key={plan} className={`plan-card ${plan}`}>
                     {isPopular && (
-                      <div className="plan-popular-badge" style={{ position: "absolute", top: "1rem", right: "1rem", backgroundColor: "#6b46c1", color: "white", padding: "0.25rem 0.75rem", borderRadius: "9999px", fontWeight: "bold", fontSize: "0.75rem" }}>
+                      <div className="plan-popular-badge" style={{ backgroundColor: "#a1d4c5" }}>
                         ★ Most Popular
                       </div>
                     )}
-                    <div className="plan-icon" style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>
+                    <div className="plan-icon">
                       {plan === "free" ? "🔓" : plan === "professional" ? "💼" : ""}
                     </div>
-                    <div className="plan-name" style={{ fontWeight: "bold", fontSize: "1.25rem" }}>{label}</div>
-                    <div className="plan-price" style={{ fontWeight: "700", fontSize: "1.5rem", color: "#6b46c1" }}>
+                    <div className="plan-name">{label}</div>
+                    <div className="plan-price" style={{ color: "#000000" }}>
                       <div className="monthly">
-                        {monthly}<span className="unit" style={{ fontWeight: "400", fontSize: "1rem" }}>/mo</span>
+                        {monthly}<span className="unit">/mo</span>
                       </div>
-                      <div className="yearly" style={{ fontWeight: "400", fontSize: "0.875rem", color: "#718096" }}>
+                      <div className="yearly" style={{ color: "#000000" }}>
                         {price}<span className="unit">/yr</span>
                       </div>
                     </div>
-                    <div className="plan-description" style={{ color: "#718096", fontSize: "0.9rem", textAlign: "center" }}>{description}</div>
+                    <div className="plan-description" style={{ color: "#000000" }}>{description}</div>
                     <button
                       className="plan-button"
                       onClick={async () => {
@@ -86,7 +86,7 @@ function App() {
                           alert("Checkout failed.");
                         }
                       }}
-                      style={{ marginTop: "auto", padding: "0.75rem 1.5rem", backgroundColor: "#6b46c1", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontWeight: "600" }}
+                      style={{ marginTop: "auto", padding: "0.75rem 1.5rem", backgroundColor: "#a1d4c5", color: "#000000", border: "none", borderRadius: "4px", cursor: "pointer", fontWeight: "600" }}
                     >
                       Select Plan
                     </button>
