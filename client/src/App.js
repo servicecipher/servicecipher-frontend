@@ -1,7 +1,7 @@
 import React from "react";
 import UploadForm from "./UploadForm";
 import "./App.css";
-import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignIn, UserButton, useUser } from "@clerk/clerk-react";
+import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignIn, UserButton, useUser, PricingTable } from "@clerk/clerk-react";
 
 // Put your Clerk publishable key here or in index.js as you've already done
 // const clerkPubKey = "pk_test_..."; // not needed if in index.js
@@ -35,73 +35,9 @@ function App() {
       <main>
         {/* Login Block */}
         <SignedOut>
-          <div className="custom-pricing-cards">
+          <div style={{ maxWidth: "800px", margin: "auto", padding: "2rem 1rem" }}>
             <h2 style={{ textAlign: "center" }}>Choose Your Plan</h2>
-            <div
-              className="card-grid"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "16px",
-                flexWrap: "wrap",
-                margin: "2rem 0",
-              }}
-            >
-              {[
-                {
-                  name: "Free",
-                  price: "$0",
-                  desc: "Always free. Great for trying out ServiceCipher.",
-                  key: "free",
-                },
-                {
-                  name: "Basic",
-                  price: "$66.66/mo",
-                  desc: "Up to 200 reports/mo. Great for solo or single-location shops.",
-                  key: "basic",
-                },
-                {
-                  name: "Pro",
-                  price: "$125/mo",
-                  desc: "Up to 500 reports/mo. Ideal for busy shops or growing teams.",
-                  key: "professional",
-                },
-              ].map((plan) => (
-                <div
-                  key={plan.key}
-                  style={{
-                    border: "1px solid #cefee1",
-                    borderRadius: "10px",
-                    padding: "20px",
-                    margin: "20px",
-                    maxWidth: "300px",
-                    background: "#fff",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-                    flex: "1 1 250px",
-                    minWidth: "250px",
-                  }}
-                >
-                  <h3>{plan.name}</h3>
-                  <h2 style={{ margin: "10px 0" }}>{plan.price}</h2>
-                  <p>{plan.desc}</p>
-                  <a
-                    href={`https://accounts.servicecipher.com/sign-up?plan=${plan.key}&redirect_url=https://app.servicecipher.com`}
-                    style={{
-                      display: "inline-block",
-                      marginTop: "10px",
-                      padding: "10px 20px",
-                      backgroundColor: "#a1d4c5",
-                      color: "#000000",
-                      borderRadius: "6px",
-                      textDecoration: "none",
-                      fontWeight: "600",
-                    }}
-                  >
-                    Choose Plan
-                  </a>
-                </div>
-              ))}
-            </div>
+            <PricingTable />
           </div>
           <div style={{ textAlign: "center", marginTop: "2rem" }}>
             <SignInButton mode="modal">
