@@ -1,7 +1,6 @@
 import React from "react";
 import UploadForm from "./UploadForm";
 import "./App.css";
-import "./PricingStyles.css";
 import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignIn, UserButton, useUser } from "@clerk/clerk-react";
 
 // Put your Clerk publishable key here or in index.js as you've already done
