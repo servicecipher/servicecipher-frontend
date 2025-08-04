@@ -118,12 +118,14 @@ function App() {
                         }
 
                         try {
+                          const { id: userId } = user || {};
+
                           const response = await fetch("https://servicecipher-backend-production.up.railway.app/api/create-checkout-session", {
                             method: "POST",
                             headers: {
                               "Content-Type": "application/json",
                             },
-                            body: JSON.stringify({ planId: selectedPlanId, userId: user?.id }),
+                            body: JSON.stringify({ planId: selectedPlanId, userId }),
                           });
 
                           const data = await response.json();
