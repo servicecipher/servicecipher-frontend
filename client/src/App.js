@@ -37,7 +37,7 @@ function App() {
         <SignedOut>
           <div className="plan-selection-container">
             <h2 className="plan-title">Select a Plan</h2>
-            <div className="plan-buttons">
+            <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginTop: "1rem" }}>
               {["free", "basic", "professional"].map((plan) => (
                 <button
                   key={plan}
@@ -54,7 +54,15 @@ function App() {
                       alert("Checkout failed.");
                     }
                   }}
-                  className="plan-button"
+                  style={{
+                    backgroundColor: "#000000",
+                    color: "#ffffff",
+                    padding: "12px 24px",
+                    borderRadius: "6px",
+                    fontSize: "16px",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
                 >
                   Choose {plan.charAt(0).toUpperCase() + plan.slice(1)}
                 </button>
